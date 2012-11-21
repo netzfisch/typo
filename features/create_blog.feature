@@ -13,3 +13,4 @@ Feature: Create Blog
     When I am on the home page
     Then I should not see "My Shiny Weblog!"
     And I should see "Teh Blag"
+
