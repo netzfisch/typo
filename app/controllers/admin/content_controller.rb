@@ -37,13 +37,14 @@ class Admin::ContentController < Admin::BaseController
     new_or_edit
   end
 
-  def merge_articles
+  def merge
     @article1 = Article.find(params[:id])
     @article2 = Article.find(params[:merge_with])
     @article1.body = @article1.body + @article2.body
     if @article1.save
+      @article2.destroy
       redirect_to :action => 'index'
-      flash[:success] = _("Success, you just merged two aricles!")
+      flash[:notice] = _("Success, you just merged two articles!")
     end
   end
 

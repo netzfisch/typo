@@ -4,3 +4,10 @@
   <%= render :partial => "form" %>
 
 <% end %>
+
+<% if(form_action == "edit") %>
+  <% if(current_user.admin?) %>
+    <%= render :partial => "merge" %>
+  <% end %>
+<% end %>
+
