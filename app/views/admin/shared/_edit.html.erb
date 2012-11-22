@@ -5,9 +5,8 @@
 
 <% end %>
 
-<% if(form_action == "edit") %>
-  <% if(current_user.admin?) %>
-    <%= render :partial => "merge" %>
-  <% end %>
+
+<% if(current_user.admin?) %>
+  <%= render :partial => "merge" %>
 <% end %>
 
