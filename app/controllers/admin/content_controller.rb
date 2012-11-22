@@ -42,6 +42,9 @@ class Admin::ContentController < Admin::BaseController
     @article2 = Article.find(params[:merge_with])
     @article1.body = @article1.body + @article2.body
     if @article1.save
+
+      @article2.comments << @article1
+
       @article2.destroy
       redirect_to :action => 'index'
       flash[:notice] = _("Success, you just merged two articles!")
