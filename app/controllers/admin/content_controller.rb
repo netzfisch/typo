@@ -43,7 +43,7 @@ class Admin::ContentController < Admin::BaseController
     @article1.body = @article1.body + @article2.body
     if @article1.save
 
-      @article2.comments << @article1
+      #@article2.feedbacks << @article1
 
       @article2.destroy
       redirect_to :action => 'index'
