@@ -478,8 +478,8 @@ describe Admin::ContentController do
       it 'should merge articles' do
         get :edit, 'id' => @article.id
         response.should render_template('_form')
-        response.should have_id('merge_with')
-        response.should have_button("Merge With This Article")
+        #response.should have_selector(:text => "merge_with")
+        response.should have_button("Merge")
         response.should redirect_to(:controller => "admin/content", :action => "merge_articles")
       end
     end

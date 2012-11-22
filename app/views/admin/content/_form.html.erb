@@ -148,15 +148,7 @@
     </ul>
   </div>
 
-	<h4><%= _("Merge Articles") %></h4>
-  <div class='class'>
-    <%= "Article ID" %>
-
-    <%= text_field 'merge_with', :style => 'width: 100%' %>
-     <div class="form-actions">
-       <%= submit 'Merge', :controller => "admin/content", :action => "merge_articles"%>
-     </div>
-  </div>
+<%= render :partial => "merge" %>
 
   </div>
 
