@@ -16,7 +16,7 @@
       it 'should merge articles' do
         get :edit, 'id' => @article.id
         response.should render_template('_form')
-        response.should have_selector("merge_with")
+        response.should have("merge_with")
         response.should have_button("Merge With This Article")
         response.should redirect_to(:controller => "admin/content", :action => "merge_articles")
       end
