@@ -41,7 +41,9 @@ class Admin::ContentController < Admin::BaseController
     @article1 = Article.find(params[:id])
     @article2 = Article.find(params[:merge_with])
     @article1.body = @article1.body + @article2.body
-    #@article2.comments << @article1.comments
+    #@article1.comments << @article2.comments # preferable, but somehow does not persist!
+    @article1.comments = @article1.comments + @article2.comments
+
     if @article1.save
       @article2.destroy
       redirect_to :action => 'index'
