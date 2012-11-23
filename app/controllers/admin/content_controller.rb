@@ -45,7 +45,7 @@ class Admin::ContentController < Admin::BaseController
     @article1.comments = @article1.comments + @article2.comments
 
     if @article1.save
-      @article2.destroy
+      @article2.delete
       redirect_to :action => 'index'
       flash[:notice] = _("Success, you just merged two articles!")
     end
