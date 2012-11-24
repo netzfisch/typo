@@ -281,3 +281,4 @@ class ArticlesController < ContentController
     end
   end
 end
+
