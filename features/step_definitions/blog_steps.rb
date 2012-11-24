@@ -1,7 +1,7 @@
 Given /^the blog is set up$/ do
-  Blog.default.update_attributes!({:blog_name => 'Teh Blag',
-                                   :base_url => 'http://localhost:3000'});
+  Blog.default.update_attributes!({:blog_name => 'Teh Blag', :base_url => 'http://localhost:3000'});
   Blog.default.save!
+  #Blog.create!(:blog_name => 'Teh Blag', :base_url => 'http://localhost:3000')
   User.create!({:login => 'admin',
                 :password => 'aaaaaaaa',
                 :email => 'joe@snow.com',

@@ -62,6 +62,13 @@ class Content < ActiveRecord::Base
 
   include Stateful
 
+  def self.merge_articles(first, second)
+    # first.body << second.body , or standard:
+    first.body = first.body + second.body
+    first.comments << second.comments
+    return first
+  end
+
   def invalidates_cache?(on_destruction = false)
     @invalidates_cache ||= if on_destruction
       just_changed_published_status? || published?
@@ -69,14 +76,14 @@ class Content < ActiveRecord::Base
       (changed? && published?) || just_changed_published_status?
     end
   end
-  
+
   def shorten_url
     return unless self.published
-    
+
     r = Redirect.new
     r.from_path = r.shorten
     r.to_path = self.permalink_url
-    
+
     # This because updating self.redirects.first raises ActiveRecord::ReadOnlyRecord
     unless (red = self.redirects.first).nil?
       return if red.to_path == self.permalink_url
